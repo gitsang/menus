@@ -1,0 +1,11 @@
+token: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+menus:
+  - name: americano coffee
+    ingredients: water, espresso
+    image: /images/americano-coffee.jpg
+  - name: latte coffee
+    ingredients: water, espresso, milk
+    image: /images/latte-coffee.jpg
+  - name: Tequila Sunrise
+    ingredients: Tequila, Lemon, Pomegranate Syrup, Orange Juice
+    image: /images/tequila-sunrise.jpg

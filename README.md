@@ -1,18 +1,45 @@
-# sv
+# Menu Website
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A Svelte-based menu website that displays menu items from a YAML configuration file and generates images using AI.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- ✨ YAML-based menu configuration
+- 🖼️ AI-powered image generation for menu items
+- 📱 Responsive design with Tailwind CSS
+- ⚡ Built with SvelteKit for optimal performance
+
+## Configuration
+
+Edit the `static/menu.yaml` file to configure your menu items:
+
+```yaml
+menus:
+  - name: americano
+    ingredients: water, espresso
+  - name: latte
+    ingredients: water, espresso, milk
+  - name: Tequila Sunrise
+    ingredients: Tequila, Lemon, Pomegranate Syrup, Orange Juice
+token: xxxxxx # Replace with your API token
+```
+
+Make sure to replace `xxxxxx` with your actual SiliconFlow API token to enable image generation.
+
+## Image Generation
+
+Generate menu images before building:
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+npm run generate
 ```
+
+This will:
+
+- Generate AI images for each menu item using the SiliconFlow API
+- Save images to `static/images/` directory
+- Update the YAML configuration with image paths
+- Skip existing images to avoid regeneration
 
 ## Developing
 
