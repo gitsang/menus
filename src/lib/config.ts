@@ -1,9 +1,10 @@
 import yaml from 'js-yaml';
+import { base } from '$app/paths';
 import type { MenuConfig } from './types.js';
 
 export async function loadMenuConfig(): Promise<MenuConfig> {
 	try {
-		const response = await fetch('/menu.yaml');
+		const response = await fetch(`${base}/menu.yaml`);
 		const yamlText = await response.text();
 		const config = yaml.load(yamlText) as MenuConfig;
 		return config;

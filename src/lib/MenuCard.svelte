@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import type { MenuItem } from './types.js';
 
 	interface Props {
@@ -6,13 +7,15 @@
 	}
 
 	let { item }: Props = $props();
+	
+	const imageUrl = $derived(item.image ? (item.image.startsWith('http') ? item.image : `${base}${item.image}`) : null);
 </script>
 
 <div class="rounded-lg border bg-white p-6 shadow-md">
 	<div class="mb-4">
-		{#if item.image}
+		{#if imageUrl}
 			<img
-				src={item.image}
+				src={imageUrl}
 				alt={item.name}
 				class="mb-4 aspect-square w-full rounded-md object-cover"
 			/>
