@@ -11,9 +11,9 @@
 <div class="rounded-lg border bg-white p-6 shadow-md">
 	<div class="mb-4">
 		{#if item.image}
-			<img src={item.image} alt={item.name} class="mb-4 h-48 w-full rounded-md object-cover" />
+			<img src={item.image} alt={item.name} class="mb-4 aspect-square w-full rounded-md object-cover" />
 		{:else}
-			<div class="mb-4 flex h-48 w-full items-center justify-center rounded-md bg-gray-200">
+			<div class="mb-4 flex aspect-square w-full items-center justify-center rounded-md bg-gray-200">
 				<span class="text-gray-500">No image available</span>
 			</div>
 		{/if}
