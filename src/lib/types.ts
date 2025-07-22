@@ -1,6 +1,7 @@
 export interface MenuItem {
 	name: string;
 	ingredients: string;
+	price: string;
 	image?: string;
 }
 

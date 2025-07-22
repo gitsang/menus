@@ -17,10 +17,13 @@ Edit the `static/menu.yaml` file to configure your menu items:
 menus:
   - name: americano
     ingredients: water, espresso
+    price: "$3.50"
   - name: latte
     ingredients: water, espresso, milk
+    price: "$4.50"
   - name: Tequila Sunrise
     ingredients: Tequila, Lemon, Pomegranate Syrup, Orange Juice
+    price: "$8.00"
 token: xxxxxx # Replace with your API token
 ```
 
