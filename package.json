@@ -7,7 +7,7 @@
 		"dev": "vite dev",
 		"build": "npm run build:web && npm run build:container",
 		"build:web": "vite build",
-		"build:container": "docker build -f Containerfile -t menu-website .",
+		"build:container": "docker build -f Containerfile --no-cache -t menu-website .",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

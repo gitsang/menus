@@ -1,8 +1,9 @@
 services:
   menu-app:
-    build:
-      context: .
-      dockerfile: Containerfile
+    # build:
+    #   context: .
+    #   dockerfile: Containerfile
+    image: menu-website
     container_name: menu-website
     ports:
       - '5874:80'
