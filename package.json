@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && docker build -f Containerfile -t menu-website .",
+		"build": "npm run build:web && npm run build:container",
 		"build:web": "vite build",
 		"build:container": "docker build -f Containerfile -t menu-website .",
 		"preview": "vite preview",
