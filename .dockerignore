@@ -11,8 +11,7 @@ README.md
 .DS_Store
 Thumbs.db
 
-# Build outputs (will be generated during build)
-build/
+# Build outputs (only exclude .svelte-kit as build/ is needed for container)
 .svelte-kit/
 
 # Development files

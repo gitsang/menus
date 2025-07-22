@@ -4,7 +4,7 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy built static files (includes everything needed)
-COPY build/* /usr/share/nginx/html/
+COPY build/ /usr/share/nginx/html/
 
 EXPOSE 80
 

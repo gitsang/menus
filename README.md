@@ -108,4 +108,4 @@ docker compose up -d
 docker compose down
 ```
 
-The application will be available at http://localhost:8080
+The application will be available at http://localhost:5874
