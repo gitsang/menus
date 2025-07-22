@@ -18,10 +18,12 @@
 		"prebuild": "npm run generate",
 		"deploy": "docker compose up -d",
 		"deploy:stop": "docker compose down",
-		"deploy:logs": "docker compose logs -f"
+		"deploy:logs": "docker compose logs -f",
+		"deploy:gh-pages": "npm run build:web && gh-pages -d build"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
+		"gh-pages": "^6.1.1",
 		"@eslint/js": "^9.18.0",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.22.0",
