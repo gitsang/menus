@@ -86,7 +86,7 @@ npm run deploy
 npm run build:web
 
 # Build only container image
-npm run build:docker
+npm run build:container
 
 # Stop deployment
 npm run deploy:stop
