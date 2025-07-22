@@ -1,0 +1,21 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.env.*
+.vscode
+.claude
+*.log
+.DS_Store
+Thumbs.db
+
+# Build outputs (will be generated during build)
+build/
+.svelte-kit/
+
+# Development files
+.eslintrc.*
+.prettierrc
+.prettierignore

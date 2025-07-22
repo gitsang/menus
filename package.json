@@ -5,7 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build && docker build -f Containerfile -t menu-website .",
+		"build:web": "vite build",
+		"build:docker": "docker build -f Containerfile -t menu-website .",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -13,7 +15,10 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"generate": "node scripts/generate-images.js",
-		"prebuild": "npm run generate"
+		"prebuild": "npm run generate",
+		"deploy": "docker compose up -d",
+		"deploy:stop": "docker compose down",
+		"deploy:logs": "docker compose logs -f"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",

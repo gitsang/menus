@@ -2,14 +2,14 @@
 
 A Svelte-based menu website that displays menu items from a YAML configuration file and generates images using AI.
 
-## Features
+## 1. Features
 
 - ✨ YAML-based menu configuration
 - 🖼️ AI-powered image generation for menu items
 - 📱 Responsive design with Tailwind CSS
 - ⚡ Built with SvelteKit for optimal performance
 
-## Configuration
+## 2. Configuration
 
 Edit the `static/menu.yaml` file to configure your menu items:
 
@@ -17,19 +17,19 @@ Edit the `static/menu.yaml` file to configure your menu items:
 menus:
   - name: americano
     ingredients: water, espresso
-    price: "$3.50"
+    price: '$3.50'
   - name: latte
     ingredients: water, espresso, milk
-    price: "$4.50"
+    price: '$4.50'
   - name: Tequila Sunrise
     ingredients: Tequila, Lemon, Pomegranate Syrup, Orange Juice
-    price: "$8.00"
+    price: '$8.00'
 token: xxxxxx # Replace with your API token
 ```
 
 Make sure to replace `xxxxxx` with your actual SiliconFlow API token to enable image generation.
 
-## Image Generation
+## 3. Image Generation
 
 Generate menu images before building:
 
@@ -44,7 +44,7 @@ This will:
 - Update the YAML configuration with image paths
 - Skip existing images to avoid regeneration
 
-## Developing
+## 4. Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -55,7 +55,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+## 5. Building
 
 To create a production version of your app:
 
@@ -65,4 +65,47 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## 6. Container Deployment
+
+The project includes Docker containerization with nginx for production deployment.
+
+### 6.1 Build and Deploy
+
+```bash
+# Build web assets and container image
+npm run build
+
+# Deploy using Docker Compose
+npm run deploy
+```
+
+### 6.2 Additional Container Commands
+
+```bash
+# Build only web assets
+npm run build:web
+
+# Build only container image
+npm run build:docker
+
+# Stop deployment
+npm run deploy:stop
+
+# View container logs
+npm run deploy:logs
+```
+
+### 6.3 Manual Container Commands
+
+```bash
+# Build container image
+docker build -f Containerfile -t menu-website .
+
+# Run with Docker Compose
+docker compose up -d
+
+# Stop containers
+docker compose down
+```
+
+The application will be available at http://localhost:8080

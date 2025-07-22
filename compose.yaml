@@ -1,0 +1,20 @@
+services:
+  menu-app:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: menu-website
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # Optional: Mount static directory for easy image updates
+      - ./static:/usr/share/nginx/html:ro
+    networks:
+      - menu-network
+
+networks:
+  menu-network:
+    driver: bridge
