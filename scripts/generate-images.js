@@ -4,11 +4,11 @@ import yaml from 'js-yaml';
 
 const API_URL = 'https://api.siliconflow.cn/v1/images/generations';
 
-async function generateMenuImage(prompt, token) {
+async function generateMenuImage(name, ingredients, token) {
 	try {
 		const requestData = {
 			model: 'Kwai-Kolors/Kolors',
-			prompt: `Food photography of ${prompt}, professional lighting, high quality, appetizing`,
+			prompt: `Food photography of ${name} made with ${ingredients}, professional lighting, high quality, appetizing, detailed food styling`,
 			image_size: '1024x1024',
 			batch_size: 1,
 			num_inference_steps: 20,
@@ -53,60 +53,60 @@ async function downloadImage(url, filePath) {
 }
 
 async function main() {
-	// 读取配置文件
+	// Read configuration file
 	const configPath = path.join(process.cwd(), 'static', 'menu.yaml');
 	const yamlContent = fs.readFileSync(configPath, 'utf8');
 	const config = yaml.load(yamlContent);
 
 	if (!config.token || config.token === 'xxxxxx') {
-		console.error('请在 static/menu.yaml 中设置有效的 API token');
+		console.error('Please set a valid API token in static/menu.yaml');
 		process.exit(1);
 	}
 
-	// 创建图片目录
+	// Create images directory
 	const imagesDir = path.join(process.cwd(), 'static', 'images');
 	if (!fs.existsSync(imagesDir)) {
 		fs.mkdirSync(imagesDir, { recursive: true });
 	}
 
-	console.log('开始生成菜单图片...');
+	console.log('Starting menu image generation...');
 
-	// 为每个菜单项生成图片
+	// Generate images for each menu item
 	for (const item of config.menus) {
 		const imageName = `${item.name.replace(/\s+/g, '-').toLowerCase()}.jpg`;
 		const imagePath = path.join(imagesDir, imageName);
 
-		// 如果图片已存在，跳过
+		// Skip if image already exists
 		if (fs.existsSync(imagePath)) {
-			console.log(`图片已存在，跳过: ${imageName}`);
+			console.log(`Image already exists, skipping: ${imageName}`);
 			item.image = `/images/${imageName}`;
 			continue;
 		}
 
-		console.log(`正在生成 ${item.name} 的图片...`);
+		console.log(`Generating image for ${item.name}...`);
 
-		const imageUrl = await generateMenuImage(item.name, config.token);
+		const imageUrl = await generateMenuImage(item.name, item.ingredients, config.token);
 		if (imageUrl) {
 			const downloaded = await downloadImage(imageUrl, imagePath);
 			if (downloaded) {
-				console.log(`✓ 成功生成: ${imageName}`);
+				console.log(`✓ Successfully generated: ${imageName}`);
 				item.image = `/images/${imageName}`;
 			} else {
-				console.log(`✗ 下载失败: ${imageName}`);
+				console.log(`✗ Download failed: ${imageName}`);
 			}
 		} else {
-			console.log(`✗ 生成失败: ${imageName}`);
+			console.log(`✗ Generation failed: ${imageName}`);
 		}
 
-		// 添加延迟避免 API 限制
+		// Add delay to avoid API rate limits
 		await new Promise((resolve) => setTimeout(resolve, 1000));
 	}
 
-	// 更新配置文件，包含图片路径
+	// Update configuration file with image paths
 	const updatedYaml = yaml.dump(config);
 	fs.writeFileSync(configPath, updatedYaml);
 
-	console.log('图片生成完成！');
+	console.log('Image generation completed!');
 }
 
 main().catch(console.error);
