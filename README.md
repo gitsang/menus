@@ -2,6 +2,8 @@
 
 A Svelte-based menu website that displays menu items from a YAML configuration file and generates images using AI.
 
+![](./.resources/preview.png)
+
 ## 1. Features
 
 - ✨ YAML-based menu configuration
