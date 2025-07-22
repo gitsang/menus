@@ -53,13 +53,23 @@ async function downloadImage(url, filePath) {
 }
 
 async function main() {
-	// Read configuration file
+	// Read configuration files
 	const configPath = path.join(process.cwd(), 'static', 'menu.yaml');
+	const secretPath = path.join(process.cwd(), 'secret.yaml');
+	
 	const yamlContent = fs.readFileSync(configPath, 'utf8');
 	const config = yaml.load(yamlContent);
+	
+	// Read token from secret file
+	let token;
+	if (fs.existsSync(secretPath)) {
+		const secretContent = fs.readFileSync(secretPath, 'utf8');
+		const secretConfig = yaml.load(secretContent);
+		token = secretConfig.token;
+	}
 
-	if (!config.token || config.token === 'xxxxxx') {
-		console.error('Please set a valid API token in static/menu.yaml');
+	if (!token || token === 'xxxxxx') {
+		console.error('Please set a valid API token in secret.yaml');
 		process.exit(1);
 	}
 
@@ -85,7 +95,7 @@ async function main() {
 
 		console.log(`Generating image for ${item.name}...`);
 
-		const imageUrl = await generateMenuImage(item.name, item.ingredients, config.token);
+		const imageUrl = await generateMenuImage(item.name, item.ingredients, token);
 		if (imageUrl) {
 			const downloaded = await downloadImage(imageUrl, imagePath);
 			if (downloaded) {

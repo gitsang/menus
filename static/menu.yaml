@@ -1,0 +1,13 @@
+menus:
+  - name: americano coffee
+    ingredients: water, espresso
+    price: $3.50
+    image: /images/americano-coffee.jpg
+  - name: latte coffee
+    ingredients: water, espresso, milk
+    price: $4.50
+    image: /images/latte-coffee.jpg
+  - name: Tequila Sunrise
+    ingredients: Tequila, Lemon, Pomegranate Syrup, Orange Juice
+    price: $8.00
+    image: /images/tequila-sunrise.jpg
