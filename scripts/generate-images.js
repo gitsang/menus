@@ -9,7 +9,7 @@ async function generateMenuImage(name, ingredients, token) {
 		const requestData = {
 			model: 'Kwai-Kolors/Kolors',
 			prompt: `Food photography of ${name} made with ${ingredients}, professional lighting, high quality, appetizing, detailed food styling`,
-			image_size: '1024x1024',
+			image_size: '512x512',
 			batch_size: 1,
 			num_inference_steps: 20,
 			guidance_scale: 7.5
