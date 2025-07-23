@@ -1,13 +1,82 @@
 menus:
-  - name: americano coffee
+  # 基础
+  - name: 美式 (冰/热)
     ingredients: water, espresso
-    price: $3.50
+    price: 9.9
     image: /images/americano-coffee.jpg
-  - name: latte coffee
+  - name: 拿铁
     ingredients: water, espresso, milk
-    price: $4.50
+    price: 12.9
     image: /images/latte-coffee.jpg
-  - name: Tequila Sunrise
-    ingredients: Tequila, Lemon, Pomegranate Syrup, Orange Juice
-    price: $8.00
+
+  # 意式特调
+  - name: 黑粉 
+    price: 15.9
+    ingredients: 碳粉、浓缩、红石榴糖浆、牛奶
+    image: /images/black-pink.jpg
+  - name: 椰云冰
+    price: 13.9
+    ingredients: 椰汁、牛奶、浓缩
+    image: /images/coconut-cloud.jpg
+  - name: 红茶椰乳拿铁（热）
+    price: 14.9
+    ingredients: 红茶、椰汁、牛奶、浓缩
+    image: /images/black-tea-coconut-latte.jpg
+
+  # 美式特调
+  - name: 话梅美式 
+    price: 13.9
+    ingredients: 水、浓缩、话梅
+    image: /images/plums-coffee.jpg
+  - name: 葡萄菲士
+    price: 15.9
+    ingredients: 葡萄汁、气泡水、浓缩
+    image: /images/pineapple-fizz.jpg
+  - name: 荔枝冰茶
+    price: 16.9
+    ingredients: 茉莉绿茶、荔枝酱、荔枝肉、浓缩
+    image: /images/lychee-tea.jpg
+
+  # 手冲
+  - name: 花魁 9.0
+    price: 21.9
+    ingredients: 花魁 9.0
+    image: /images/hua-kui-9.jpg
+  - name: 瑰夏 G4
+    price: 21.9
+    ingredients: 瑰夏 G4
+    image: /images/gui-xia-g4.jpg
+
+  # 分层鸡尾酒
+  - name: 龙舌兰日出
+    price: 21.9
+    ingredients: 龙舌兰、橙汁、红石榴糖浆
     image: /images/tequila-sunrise.jpg
+  - name: 蓝粉
+    price: 21.9
+    ingredients: 伏特加、养乐多、红石榴糖浆、蓝橙、柠檬汁
+    image: /images/blue-pink.jpg
+
+  # 摇和鸡尾酒
+  - name: 高潮 
+    price: 23.9
+    ingredients: 君度、百利甜、橙汁
+    image: /images/climax.jpg
+  - name: 初恋 
+    price: 23.9
+    ingredients: 君度、百利甜、草莓汁、红石榴糖浆
+    image: /images/first-love.jpg
+  - name: 波士顿酸
+    price: 23.9
+    ingredients: 威士忌、柠檬汁、蛋清
+    image: /images/boston-sour.jpg
+
+  # 调和鸡尾酒：
+  - name: 君度茶（热）
+    price: 16.9
+    ingredients: 君度、热红茶
+    image: /images/jun-du-tea.jpg
+  - name: 水瓶
+    price: 24.9
+    ingredients: 蓝橙、伏特加、金酒
+    image: /images/aquarius.jpg

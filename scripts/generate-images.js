@@ -56,10 +56,10 @@ async function main() {
 	// Read configuration files
 	const configPath = path.join(process.cwd(), 'static', 'menu.yaml');
 	const secretPath = path.join(process.cwd(), 'secret.yaml');
-	
+
 	const yamlContent = fs.readFileSync(configPath, 'utf8');
 	const config = yaml.load(yamlContent);
-	
+
 	// Read token from secret file
 	let token;
 	if (fs.existsSync(secretPath)) {
@@ -74,47 +74,44 @@ async function main() {
 	}
 
 	// Create images directory
-	const imagesDir = path.join(process.cwd(), 'static', 'images');
-	if (!fs.existsSync(imagesDir)) {
-		fs.mkdirSync(imagesDir, { recursive: true });
+	const staticDir = path.join(process.cwd(), 'static');
+	if (!fs.existsSync(staticDir)) {
+		fs.mkdirSync(staticDir, { recursive: true });
 	}
 
 	console.log('Starting menu image generation...');
 
-	// Generate images for each menu item
 	for (const item of config.menus) {
-		const imageName = `${item.name.replace(/\s+/g, '-').toLowerCase()}.jpg`;
-		const imagePath = path.join(imagesDir, imageName);
-
-		// Skip if image already exists
-		if (fs.existsSync(imagePath)) {
-			console.log(`Image already exists, skipping: ${imageName}`);
-			item.image = `/images/${imageName}`;
+		if (item.image === '') {
+			console.log(`No image for ${item.name}, skipping...`);
 			continue;
 		}
 
-		console.log(`Generating image for ${item.name}...`);
+		const imagePath = path.join(staticDir, item.image);
 
+		// Skip if image already exists
+		if (fs.existsSync(imagePath)) {
+			console.log(`Image already exists, skipping: ${item.image}`);
+			continue;
+		}
+		console.log(`Generating image to ${item.image} for ${item.name}...`);
+
+		// Generate image
 		const imageUrl = await generateMenuImage(item.name, item.ingredients, token);
 		if (imageUrl) {
 			const downloaded = await downloadImage(imageUrl, imagePath);
 			if (downloaded) {
-				console.log(`✓ Successfully generated: ${imageName}`);
-				item.image = `/images/${imageName}`;
+				console.log(`✓ Successfully generated: ${item.image}`);
 			} else {
-				console.log(`✗ Download failed: ${imageName}`);
+				console.log(`✗ Download failed: ${item.image}`);
 			}
 		} else {
-			console.log(`✗ Generation failed: ${imageName}`);
+			console.log(`✗ Generation failed: ${item.image}`);
 		}
 
 		// Add delay to avoid API rate limits
 		await new Promise((resolve) => setTimeout(resolve, 1000));
 	}
-
-	// Update configuration file with image paths
-	const updatedYaml = yaml.dump(config);
-	fs.writeFileSync(configPath, updatedYaml);
 
 	console.log('Image generation completed!');
 }
