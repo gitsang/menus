@@ -80,3 +80,18 @@ menus:
     price: 24.9
     ingredients: 蓝橙、伏特加、金酒
     image: /images/aquarius.jpg
+
+  # 甜点
+  - name: 焦糖布丁
+    price: 18.9
+    image: /images/caramel-pudding.jpg
+  - name: 怪味曲奇
+    price: 16.9
+    image: /images/cookie.jpg
+  - name: 巴斯克蛋糕
+    price: 21.9
+    image: /images/bask.jpg
+  - name: 希腊奶
+    price: 19.9
+    image: /images/greek-yogurt.jpg
+
